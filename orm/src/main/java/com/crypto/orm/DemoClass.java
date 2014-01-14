@@ -12,9 +12,8 @@ public class DemoClass {
 
         session.beginTransaction();
         MerchantDetails merchantDetails = new MerchantDetails();
-
         merchantDetails.setUserName("djordje");
-        merchantDetails.setUserName("1234");
+        merchantDetails.setPassword("1234");
         merchantDetails.setEmail("myemail@mail.com");
 
         session.save(merchantDetails);

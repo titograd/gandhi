@@ -7,13 +7,13 @@ public class MerchantDetails implements Serializable {
     public MerchantDetails() {
     }
 
-    private int merchantId;
+    private long merchantId;
 
-    public int getMerchantId() {
+    public long getMerchantId() {
         return merchantId;
     }
 
-    public void setMerchantId(int merchantId) {
+    public void setMerchantId(long merchantId) {
         this.merchantId = merchantId;
     }
 
