@@ -10,8 +10,8 @@ import static org.mockito.Mockito.mock;
 
 public class MerchantRegistrationServiceAPITest {
 
-    public  Merchant MERCHANT_WITHOUT_PASSWORD = new Merchant("username",null);
-    public  Merchant MERCHANT_WITHOUT_USERNAME = new Merchant(null,"password");
+    public  Merchant MERCHANT_WITHOUT_PASSWORD = new Merchant("username",null, "");
+    public  Merchant MERCHANT_WITHOUT_USERNAME = new Merchant(null,"password", "");
 
     @Test(expected = MerchantDetailsMissingException.class)
     public void whenRegisteringAMerchantWithoutUsernameThereWillBeAnException() throws Exception {
