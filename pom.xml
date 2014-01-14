@@ -12,6 +12,7 @@
     <modules>
         <module>domain</module>
         <module>orm</module>
+        <module>consoleui</module>
     </modules>
 
     <dependencies>
