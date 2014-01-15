@@ -12,7 +12,8 @@
     <modules>
         <module>domain</module>
         <module>orm</module>
-        <module>consoleui</module>
+        <module>servletbasedui</module>
+        <module>assembler</module>
     </modules>
 
     <dependencies>
