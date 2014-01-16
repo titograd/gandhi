@@ -18,16 +18,19 @@
             <artifactId>domain</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>com.crypto.domain</groupId>
-            <artifactId>domain</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+<!--
         <dependency>
             <groupId>com.crypto.servletui</groupId>
             <artifactId>servletui</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+-->
+        <dependency>
+            <groupId>com.crypto.restui</groupId>
+            <artifactId>restui</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>com.crypto.orm</groupId>
             <artifactId>orm</artifactId>

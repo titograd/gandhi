@@ -12,8 +12,9 @@
     <modules>
         <module>domain</module>
         <module>orm</module>
-        <module>servletbasedui</module>
+        <!--<module>servletbasedui</module>-->
         <module>assembler</module>
+        <module>restui</module>
     </modules>
 
     <dependencies>
