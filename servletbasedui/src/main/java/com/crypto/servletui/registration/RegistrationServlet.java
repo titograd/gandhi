@@ -25,7 +25,11 @@ public class RegistrationServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        merchantRegistrationService.register(configureMerchant("test", "test", "test"));
+        merchantRegistrationService.register(
+                configureMerchant(
+                        req.getParameter("username"),
+                        req.getParameter("password"),
+                        req.getParameter("email")));
         resp.setContentType("text/html;charset=UTF-8");
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.getWriter().write("<h1>Registered!</h1>");
