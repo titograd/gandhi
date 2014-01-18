@@ -14,9 +14,9 @@ public class MerchantRegistrationServiceImpl implements MerchantRegistrationServ
     }
 
     @Override
-    public void register(Merchant merchant) {
-        validate(merchant);
-        merchantRegistrationServiceAPI.register(merchant);
+    public void register(String xml) {
+        validate(xml);
+        merchantRegistrationServiceAPI.register(xml);
     }
 
 

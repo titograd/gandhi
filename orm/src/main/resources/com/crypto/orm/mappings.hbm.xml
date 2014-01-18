@@ -8,14 +8,47 @@
             <column name="MERCHANT_ID" />
             <generator class="increment" />
         </id>
-        <property name="userName" type="string">
-            <column name="USER_NAME" length="30"  />
-        </property>
-        <property name="password" type="string">
-            <column name="PASSWORD" length="30"   />
+        <property name="bussinessName" type="string">
+            <column name="BUSINESS_NAME" length="30"  />
         </property>
         <property name="email" type="string">
-            <column name="EMAIL" length="30" />
+            <column name="EMAIL" length="30"  />
+        </property>
+        <property name="firstName" type="string">
+            <column name="FIRST_NAME" length="30"   />
+        </property>
+        <property name="secondName" type="string">
+            <column name="SECOND_NAME" length="30" />
+        </property>
+        <property name="phoneNumber" type="string">
+            <column name="PHONE_NUMBER" length="30" />
+        </property>
+        <property name="address" type="string">
+            <column name="ADDRESS" length="30" />
+        </property>
+        <property name="industry" type="string">
+            <column name="INDUSTRY" length="30" />
+        </property>
+        <property name="postalCode" type="string">
+            <column name="POSTAL_CODE" length="30" />
+        </property>
+        <property name="city" type="string">
+            <column name="CITY" length="30" />
+        </property>
+        <property name="state" type="string">
+            <column name="STATE" length="30" />
+        </property>
+        <property name="country" type="string">
+            <column name="COUNTRY" length="30" />
+        </property>
+        <property name="store" type="string">
+            <column name="STORE" length="30" />
+        </property>
+        <property name="primaryWebsite" type="string">
+            <column name="PRIMARY_WEBSITE" length="30" />
+        </property>
+        <property name="shopingCartOrPosSoftware" type="string">
+            <column name="SHOPING_CART_OR_POS_SOFTWARE" length="30" />
         </property>
     </class>
 </hibernate-mapping>

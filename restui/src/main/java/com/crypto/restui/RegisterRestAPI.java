@@ -27,17 +27,7 @@ public class RegisterRestAPI {
     @Consumes("application/xml")
     @Produces("application/xml")
     public Response register(String registrationForm) {
-        merchantRegistrationService.register(marshall(registrationForm));
+        merchantRegistrationService.register(registrationForm);
         return status(OK).build();
-    }
-
-    private Merchant marshall(String registrationInfo) {
-        System.out.print(registrationInfo);
-        //Do the mappings
-        Merchant merchant = new Merchant();
-        merchant.setUsername("fakeUserName");
-        merchant.setPassword("fakePassword");
-        merchant.setEmail("fakeEmail");
-        return merchant;
     }
 }

@@ -4,5 +4,5 @@ import com.crypto.domain.core.Merchant;
 
 public interface MerchantRegistrationServiceAPI {
 
-    public void register(Merchant merchant);
+    public void register(String xml);
 }
