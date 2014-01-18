@@ -30,7 +30,7 @@ public class TomcatServer {
         //Look for that variable and default to 8080 if it isn't there.
         String webPort = System.getenv("PORT");
         if(webPort == null || webPort.isEmpty()) {
-            webPort = "8080";
+            webPort = "8085";
         }
 
         // tomcat.setHost(new StandardHost());
