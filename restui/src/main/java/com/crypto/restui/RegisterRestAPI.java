@@ -1,14 +1,13 @@
 package com.crypto.restui;
 
-import com.crypto.domain.api.MerchantRegistrationServiceAPI;
-import com.crypto.domain.core.Merchant;
 import com.crypto.domain.services.MerchantRegistrationService;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-import static javax.ws.rs.core.MediaType.*;
 import static javax.ws.rs.core.Response.Status.OK;
 import static javax.ws.rs.core.Response.status;
 

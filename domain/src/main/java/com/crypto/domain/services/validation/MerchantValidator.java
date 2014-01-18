@@ -1,7 +1,5 @@
 package com.crypto.domain.services.validation;
 
-import com.crypto.domain.core.errors.MerchantDetailsMissingException;
-
 //REFACTOR THIS CLASS TO USE TEMPLATE METHOD PATTERN
 public class MerchantValidator {
     //TODO:add logging
