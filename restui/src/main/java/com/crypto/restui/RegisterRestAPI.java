@@ -23,8 +23,8 @@ public class RegisterRestAPI {
     //IMPORTANT NOTE: Dont use JAXB in this side of the communication. We don't want to tight couple to the domain of the user
     // interface(We don't care what the UI domain objects are, thats why we write our own mappings)
     @POST
-    @Consumes("application/xml")
-    @Produces("application/xml")
+    @Consumes({"application/xml","application/json"})
+    @Produces({"application/xml","application/json"})
     public Response register(String registrationForm) {
         merchantRegistrationService.register(registrationForm);
         return status(OK).build();

@@ -2,6 +2,7 @@ package com.crypto.domain.services.validation;
 
 //REFACTOR THIS CLASS TO USE TEMPLATE METHOD PATTERN
 public class MerchantValidator {
+    //TODO The validation will have to distinguish between JSON and XML(Maybe I should create 2 validators rather than an universal one)
     //TODO:add logging
     public static void validate(String xml) {
         validateBussinessName(xml);

@@ -18,6 +18,9 @@ import javax.xml.xpath.XPathFactory;
 import java.io.IOException;
 import java.io.StringReader;
 
+import static com.crypto.orm.utils.JSONPathTools.findWithJSONPath;
+import static com.crypto.orm.utils.XPathTools.findWithXPath;
+
 /*
 * This class is an adapter that can interact with the database.
 * We use Merchant details as an abstraction layer and we map the values
@@ -28,12 +31,14 @@ import java.io.StringReader;
 
 public class MerchantDetailsManager implements MerchantRegistrationServiceAPI {
 
+    private MerchantDetails merchantDetails = new MerchantDetails();
+
     @Override
-    public void register(String xml) {
+    public void register(String input) {
         Session session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
         try {
-        session.save(marshallMerchantDetails(xml));
+        session.save(marshallMerchantDetails(input));
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -43,32 +48,53 @@ public class MerchantDetailsManager implements MerchantRegistrationServiceAPI {
 
     //This methods populates an object that is only specific to the persistence layer and inputs into the database
     //the data from the xml.
-    private MerchantDetails marshallMerchantDetails(String xml) throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
-        MerchantDetails merchantDetails = new MerchantDetails();
-        merchantDetails.setBussinessName(findWithXPath("//REGISTRATION/BUSINESS_NAME",xml));
-        merchantDetails.setEmail(findWithXPath("//REGISTRATION/EMAIL", xml));
-        merchantDetails.setPhoneNumber(findWithXPath("//REGISTRATION/PHONE_NUMBER", xml));
-        merchantDetails.setFirstName(findWithXPath("//REGISTRATION//FIRST_NAME", xml));
-        merchantDetails.setSecondName(findWithXPath("//REGISTRATION//SECOND_NAME", xml));
-        merchantDetails.setAddress(findWithXPath("//REGISTRATION//ADDRESS", xml));
-        merchantDetails.setIndustry(findWithXPath("//REGISTRATION/INDUSTRY", xml));
-        merchantDetails.setPostalCode(findWithXPath("//REGISTRATION//POSTAL_CODE", xml));
-        merchantDetails.setCity(findWithXPath("//REGISTRATION//CITY", xml));
-        merchantDetails.setState(findWithXPath("//REGISTRATION//STATE", xml));
-        merchantDetails.setCountry(findWithXPath("//REGISTRATION//COUNTRY", xml));
-        merchantDetails.setStore(findWithXPath("//REGISTRATION//STORE", xml));
-        merchantDetails.setPrimaryWebsite(findWithXPath("//REGISTRATION//PRIMARY_WEBSITE", xml));
-        merchantDetails.setShopingCartOrPosSoftware(findWithXPath("//REGISTRATION//SHOPING_CART_ORR_POS_SOFTWARE", xml));
+    private MerchantDetails marshallMerchantDetails(String input) throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
+        if(isXML(input)) {
+            parseXML(input);
+        }
+        else {
+            parseJSON(input);
+        }
+    return merchantDetails;
+    }
+
+    private boolean isXML(String input) {
+        return input.startsWith("<");
+    }
+
+    private MerchantDetails parseXML(String input) throws SAXException, ParserConfigurationException, XPathExpressionException, IOException {
+        merchantDetails.setBussinessName(findWithXPath("//REGISTRATION/BUSINESS_NAME",input));
+        merchantDetails.setEmail(findWithXPath("//REGISTRATION/EMAIL", input));
+        merchantDetails.setPhoneNumber(findWithXPath("//REGISTRATION/PHONE_NUMBER", input));
+        merchantDetails.setFirstName(findWithXPath("//REGISTRATION//FIRST_NAME", input));
+        merchantDetails.setSecondName(findWithXPath("//REGISTRATION//SECOND_NAME", input));
+        merchantDetails.setAddress(findWithXPath("//REGISTRATION//ADDRESS", input));
+        merchantDetails.setIndustry(findWithXPath("//REGISTRATION/INDUSTRY", input));
+        merchantDetails.setPostalCode(findWithXPath("//REGISTRATION//POSTAL_CODE", input));
+        merchantDetails.setCity(findWithXPath("//REGISTRATION//CITY", input));
+        merchantDetails.setState(findWithXPath("//REGISTRATION//STATE", input));
+        merchantDetails.setCountry(findWithXPath("//REGISTRATION//COUNTRY", input));
+        merchantDetails.setStore(findWithXPath("//REGISTRATION//STORE", input));
+        merchantDetails.setPrimaryWebsite(findWithXPath("//REGISTRATION//PRIMARY_WEBSITE", input));
+        merchantDetails.setShopingCartOrPosSoftware(findWithXPath("//REGISTRATION//SHOPING_CART_ORR_POS_SOFTWARE", input));
         return merchantDetails;
     }
 
-    private String findWithXPath(String expression, String xml) throws IOException, SAXException, ParserConfigurationException, XPathExpressionException {
-        InputSource source = new InputSource(new StringReader(xml));
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = dbf.newDocumentBuilder();
-        Document document = db.parse(source);
-        XPathFactory xpathFactory = XPathFactory.newInstance();
-        XPath xpath = xpathFactory.newXPath();
-        return xpath.evaluate(expression,document);
+    private MerchantDetails parseJSON(String input) throws SAXException, ParserConfigurationException, XPathExpressionException, IOException {
+        merchantDetails.setBussinessName(findWithJSONPath("BUSINESS_NAME", input));
+        merchantDetails.setEmail(findWithJSONPath("EMAIL", input));
+        merchantDetails.setPhoneNumber(findWithJSONPath("PHONE_NUMBER", input));
+        merchantDetails.setFirstName(findWithJSONPath("FIRST_NAME", input));
+        merchantDetails.setSecondName(findWithJSONPath("SECOND_NAME", input));
+        merchantDetails.setAddress(findWithJSONPath("ADDRESS", input));
+        merchantDetails.setIndustry(findWithJSONPath("INDUSTRY", input));
+        merchantDetails.setPostalCode(findWithJSONPath("POSTAL_CODE", input));
+        merchantDetails.setCity(findWithJSONPath("CITY", input));
+        merchantDetails.setState(findWithJSONPath("STATE", input));
+        merchantDetails.setCountry(findWithJSONPath("COUNTRY", input));
+        merchantDetails.setStore(findWithJSONPath("STORE", input));
+        merchantDetails.setPrimaryWebsite(findWithJSONPath("PRIMARY_WEBSITE", input));
+        merchantDetails.setShopingCartOrPosSoftware(findWithJSONPath("SHOPING_CART_ORR_POS_SOFTWARE", input));
+        return merchantDetails;
     }
 }
