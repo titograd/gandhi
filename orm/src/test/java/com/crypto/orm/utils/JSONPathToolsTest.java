@@ -1,11 +1,7 @@
 package com.crypto.orm.utils;
 
-import net.minidev.json.JSONObject;
-import net.minidev.json.parser.JSONParser;
-import org.junit.Assert;
 import org.junit.Test;
 
-import static com.crypto.orm.utils.JSONPathTools.findWithJSONPath;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
